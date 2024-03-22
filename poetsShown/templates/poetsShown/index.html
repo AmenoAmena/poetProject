@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şiirler</title>
+    <link rel="stylesheet" href="{% static 'poetsShown/css/index.css' %}">
+</head>
+<body>
+    
+    <ul>
+        {% for poet in poets %}
+            <div class="poetShow">
+            
+                <li>
+                    <a href="{% url 'poet_show' author=poet.poetAuthor %}"><div class="poets">{{poet.poetAuthor}} - {{poet.poetName}}</div></a>
+                </li>
+            
+            </div>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

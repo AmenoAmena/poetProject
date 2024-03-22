@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% for p in poet %}
+        {{p.poetName}}
+        {% endfor %}
+    </title>
+    <link rel="stylesheet" href="{% static 'poetsShown/css/poets.css' %}">
+</head>
+<body>
+
+    {% if poet %}
+        {% for p in poet %}
+            <h1>{{p.poetAuthor}}</h1>
+            <br>
+            <h2>{{p.poetName}}</h2>
+            <br>
+            <div class="poet"><pre><h3>{{ p.poetContext }}</h3></pre></div>
+        {% endfor %}
+    {% else %}
+        <p>No poet found.</p>
+    {% endif %}
+</body>
+</html>
