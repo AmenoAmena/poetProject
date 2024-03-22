@@ -13,3 +13,4 @@ def poetShow(request,author):
     return render(request,'poetsShown/poets.html',{
         'poet':poet
     })
+
