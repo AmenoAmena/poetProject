@@ -23,8 +23,8 @@ def index(request):
             
 
 
-def poetShow(request,author):
-    poet = poetsShown.objects.filter(poetAuthor=author)
+def poetShow(request,name):
+    poet = poetsShown.objects.filter(poetName=name)
     return render(request,'poetsShown/poets.html',{
         'poet':poet
     })

@@ -56,3 +56,6 @@ ul {
 .submitBtn:hover {
     color:gray;
 }
+form {
+    margin-top: 5%;
+}
