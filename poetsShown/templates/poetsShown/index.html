@@ -8,22 +8,23 @@
     <link rel="stylesheet" href="{% static 'poetsShown/css/index.css' %}">
 </head>
 <body>
-    <h1>Şiirler</h1>
 
     <div class="container">
         <ul>
+            <h1>Şiirler</h1>
+
             {% for poet in poets %}
+
+            <li>
                 <div class="poetShow">
-                    
-                
-                    <li>
-                        <a href="{% url 'poet_show' author=poet.poetAuthor %}"><div class="poets">{{poet.poetAuthor}} <br> - <br> {{poet.poetName}}</div></a>
-                    </li>
-                
+                    <a href="{% url 'poet_show' author=poet.poetAuthor %}" class="poetLink">
+                        <div class="poet">{{ poet.poetAuthor }}</div>
+                        <div class="poetName">{{ poet.poetName }}</div>
+                    </a>
                 </div>
+            </li>
             {% endfor %}
         </ul>
-</div>
 
 </body>
 </html>

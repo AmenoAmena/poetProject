@@ -13,16 +13,17 @@
 </head>
 <body>
 
-    {% if poet %}
-        {% for p in poet %}
-            <h1>{{p.poetAuthor}}</h1>
-            <br>
-            <h2>{{p.poetName}}</h2>
-            <hr>
-            <div class="poet"><pre><h3>{{ p.poetContext }}</h3></pre></div>
-        {% endfor %}
-    {% else %}
-        <p>No poet found.</p>
-    {% endif %}
+    <div class="container">
+        {% if poet %}
+            {% for p in poet %}
+                <h1>{{ p.poetAuthor }}</h1>
+                <h2>{{ p.poetName }}</h2>
+                <hr>
+                <pre class="poet-context">{{ p.poetContext }}</pre>
+            {% endfor %}
+        {% else %}
+            <p>No poet found.</p>
+        {% endif %}
+    </div>
 </body>
 </html>

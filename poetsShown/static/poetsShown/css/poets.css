@@ -1,7 +1,50 @@
-* {
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
     text-align: center;
-    font-family: "Helvetica Neue",;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; 
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 5px;
+    color: #333; /* Dark gray */
+}
+
+h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #666; 
+}
+
+.poet-context {
+    white-space: pre-line; 
+    text-align: left;
+    line-height: 1.6;
+    background-color: #fff; 
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ccc; /* Light gray */
+    margin: 20px 0;
 }
 pre {
-    font-size: 12px;    
+    font-size:20px;
 }
