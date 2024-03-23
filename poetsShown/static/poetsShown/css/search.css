@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    text-decoration: none;
 }
 
 body {
@@ -28,12 +29,6 @@ body {
     text-align: center;
     margin-left: 25px;
 }
-
-.poetLink {
-    text-decoration: none;
-    color: #222;
-}
-
 .poet {
     font-size: 1.2em;
     font-weight: bold;
@@ -47,12 +42,13 @@ body {
 ul {
     list-style-type: none;
 }
-.submitBtn {
-
-    border: none;
-    width: 10%;
-    height: auto;
+h1 {
+    padding-top: 25px;
 }
-.submitBtn:hover {
-    color:gray;
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color: gray;
 }

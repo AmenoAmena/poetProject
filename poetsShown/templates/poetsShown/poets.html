@@ -16,7 +16,7 @@
 
     <div class="container">
             
-            <a href="{% url 'index' %}">Ana Sayfa <i class="fa-solid fa-house"></i></a>
+        <a href="{% url 'index' %}">Ana Sayfa <i class="fa-solid fa-house"></i></a>
         {% if poet %}
             {% for p in poet %}
                 <h1>{{ p.poetAuthor }}</h1>
