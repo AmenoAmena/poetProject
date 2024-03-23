@@ -5,7 +5,7 @@ from .forms import PoetSearchForm
 # Create your views here.
 def index(request):
     if request.method == "GET":
-        poets = poetsShown.objects.all()
+        poets = poetsShown.objects.order_by('-id')
         form = PoetSearchForm()
         return render(request,'poetsShown/index.html',{
             'poets':poets,
