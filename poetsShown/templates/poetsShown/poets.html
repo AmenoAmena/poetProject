@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
     <title>
         {% for p in poet %}
         {{p.poetName}}
@@ -14,6 +15,8 @@
 <body>
 
     <div class="container">
+            
+            <a href="{% url 'index' %}">Ana Sayfa <i class="fa-solid fa-house"></i></a>
         {% if poet %}
             {% for p in poet %}
                 <h1>{{ p.poetAuthor }}</h1>
