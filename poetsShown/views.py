@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import poets_shown
+from .models import poets_shown,poet_author
 from .forms import PoetSearchForm
 
 # Create your views here.
@@ -29,20 +29,8 @@ def poetShow(request,name):
         'poet':poet
     })
 
-"""
-def search(request):
-    if request.method == 'GET':
-        form = PoetSearchForm(request.GET)
-        if form.is_valid():
-            query = form.cleaned_data['query']
-            results = poetsShown.objects.filter(poetName__icontains=query)
-            return render(request, "poetsShown/search.html", {
-                "results": results,
-                'query': query
-            }) 
-    form = PoetSearchForm()
-    poets = poetsShown.objects.all()
-    return render(request, "poetsShown/search.html", {
-        'form': form
+def authorShow(request):
+    authors = poet_author.objects.all()
+    return render(request,'poetsShown/authors.html',{
+        'authors':authors
     })
-"""
