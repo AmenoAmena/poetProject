@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import poetsShown
+from .models import poets_shown
 from .forms import PoetSearchForm
 
 # Create your views here.
 def index(request):
     if request.method == "GET":
-        poets = poetsShown.objects.order_by('-id')
+        poets = poets_shown.objects.order_by('-id')
         form = PoetSearchForm()
         return render(request,'poetsShown/index.html',{
             'poets':poets,
@@ -15,7 +15,7 @@ def index(request):
         form = PoetSearchForm(request.POST)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = poetsShown.objects.filter(poetName__icontains=query)
+            results = poets_shown.objects.filter(poetName__icontains=query)
             return render(request, "poetsShown/search.html", {
                 "poets": results,
                 'searched': query
