@@ -31,6 +31,18 @@ def poetShow(request,name):
 
 def authorShow(request):
     authors = poet_author.objects.all()
+    poets_shown_list = poets_shown.objects.all()
     return render(request,'poetsShown/authors.html',{
-        'authors':authors
+        'authors':authors,
+        'poets_shown':poets_shown_list
+    })
+
+def authorPoets(request,author):
+
+    author = poet_author.objects.get(author=author)
+
+    authorPoet = poets_shown.objects.filter(poetAuthor=author)
+
+    return render(request,'poetsShown/authorPoets.html',{
+        'authorPoet':authorPoet,
     })
