@@ -3,7 +3,6 @@ from django.db import models
 # Create your models here.
 class poet_author(models.Model):
     author = models.CharField(max_length=60)
-    authorImage = models.ImageField(upload_to='upload/')
 
     def __str__(self):
         return self.author
