@@ -1,13 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>{{author}} şiirleri</title>
+    <link rel="stylesheet" href="{% static 'poetsShown/css/authorPoets.css' %}">
 </head>
 <body>
-    {% for poet in authorPoet %}
-    <p>{{poet}}</p>
-    {% endfor %}
+    <div class="container">
+        <div class="authorShow">
+            {% for poet in authorPoet %}
+                <div class="author"><a href="{% url 'poet_show' name=poet.poetName %}">{{ poet.poetName }}</a></div>
+            {% endfor %}
+        </div>
+
+    </div>
 </body>
 </html>

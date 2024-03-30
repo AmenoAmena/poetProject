@@ -20,8 +20,8 @@
         <a href="{% url 'index' %}">Ana Sayfa <i class="fa-solid fa-house"></i></a>
         {% if poet %}
             {% for p in poet %}
-                <h1>{{ p.poetAuthor }}</h1>
-                <h2>{{ p.poetName }}</h2>
+            <h1><a href="{% url 'author_shown' pk=p.id %}">{{ p.poetAuthor }}</a></h1>
+            <h2>{{ p.poetName }}</h2>
                 <hr>
                 <pre class="poet-context">{{ p.poetContext }}</pre>
             {% endfor %}

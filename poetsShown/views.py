@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import poets_shown,poet_author
 from .forms import PoetSearchForm
+from django.shortcuts import get_object_or_404
+
 
 # Create your views here.
 def index(request):
@@ -31,18 +33,15 @@ def poetShow(request,name):
 
 def authorShow(request):
     authors = poet_author.objects.all()
-    poets_shown_list = poets_shown.objects.all()
     return render(request,'poetsShown/authors.html',{
-        'authors':authors,
-        'poets_shown':poets_shown_list
+        'authors':authors
     })
 
-def authorPoets(request,author):
 
-    author = poet_author.objects.get(author=author)
-
+def authorPoets(request, pk):
+    author = get_object_or_404(poet_author, pk=pk)
     authorPoet = poets_shown.objects.filter(poetAuthor=author)
-
-    return render(request,'poetsShown/authorPoets.html',{
-        'authorPoet':authorPoet,
-    })
+    return render(request, 'poetsShown/authorPoets.html', {
+        'authorPoet': authorPoet,
+        'author':author
+        })
