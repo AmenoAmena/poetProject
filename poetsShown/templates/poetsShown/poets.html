@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
     <title>
-        {% for p in poet %}
-        {{p.poetName}}
-        {% endfor %}
+        {{poet.poetName}}
     </title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
     <link rel="stylesheet" href="{% static 'poetsShown/css/poets.css' %}">
@@ -19,12 +17,14 @@
             
         <a href="{% url 'index' %}">Ana Sayfa <i class="fa-solid fa-house"></i></a>
         {% if poet %}
-            {% for p in poet %}
-            <h1><a href="{% url 'author_shown' pk=p.id %}">{{ p.poetAuthor }}</a></h1>
-            <h2>{{ p.poetName }}</h2>
+            <h1><a href="{% url 'author_shown' pk=author.id %}">{{ poet.poetAuthor }}</a></h1>
+            <h2>{{ p.poetName }}</h2>   
+            <div class="poetShow">
+                <div class="poet">{{ poet.poetName }}</div>
+                <div class="poetName">{{ author.name }}</div>
+            </div>
                 <hr>
-                <pre class="poet-context">{{ p.poetContext }}</pre>
-            {% endfor %}
+                <pre class="poet-context">{{ poet.poetContext }}</pre>
         {% else %}
             <p>No poet found.</p>
         {% endif %}

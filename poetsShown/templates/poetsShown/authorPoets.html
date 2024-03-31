@@ -11,7 +11,7 @@
     <div class="container">
         <div class="authorShow">
             {% for poet in authorPoet %}
-                <div class="author"><a href="{% url 'poet_show' name=poet.poetName %}">{{ poet.poetName }}</a></div>
+                <div class="author"><a href="{% url 'poet_show' pk=poet.id %}">{{ poet.poetName }}</a></div>
             {% endfor %}
         </div>
 

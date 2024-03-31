@@ -25,11 +25,15 @@ def index(request):
             
 
 
-def poetShow(request,name):
-    poet = poets_shown.objects.filter(poetName=name)
-    return render(request,'poetsShown/poets.html',{
-        'poet':poet
+def poetShow(request, pk):  
+    poet = get_object_or_404(poets_shown, pk=pk) 
+    author = poet.poetAuthor 
+    authorPoet = poets_shown.objects.filter(poetAuthor=author)
+    return render(request, 'poetsShown/poets.html', {
+        'poet': poet,
+        'author': author,
     })
+
 
 def authorShow(request):
     authors = poet_author.objects.all()
