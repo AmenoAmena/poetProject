@@ -7,9 +7,15 @@
     <title>{{author}} şiirleri</title>
     <link rel="stylesheet" href="{% static 'poetsShown/css/authorPoets.css' %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
+    <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
+
+    <h1>{{author}}</h1>
+    <a href="{% url 'index' %}">Ana Sayfa <i class="fa-solid fa-house"></i></a>
+
+
     <div class="container">
         {% for poet in authorPoet %}
     <ul class="authorList">

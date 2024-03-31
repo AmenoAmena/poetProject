@@ -20,8 +20,8 @@
             <h1><a href="{% url 'author_shown' pk=author.id %}">{{ poet.poetAuthor }}</a></h1>
             <h2>{{ p.poetName }}</h2>   
             <div class="poetShow">
-                <div class="poet">{{ poet.poetName }}</div>
-                <div class="poetName">{{ author.name }}</div>
+                <h1>{{ poet.poetName }}</h1>
+                <h2>{{ author.name }}</h2>
             </div>
                 <hr>
                 <pre class="poet-context">{{ poet.poetContext }}</pre>
