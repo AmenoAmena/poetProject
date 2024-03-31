@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{author}} şiirleri</title>
     <link rel="stylesheet" href="{% static 'poetsShown/css/authorPoets.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
+
 </head>
 <body>
     <div class="container">
-        <div class="authorShow">
-            {% for poet in authorPoet %}
+        {% for poet in authorPoet %}
+    <ul class="authorList">
+        <li class="authorShow">
                 <div class="author"><a href="{% url 'poet_show' pk=poet.id %}">{{ poet.poetName }}</a></div>
-            {% endfor %}
-        </div>
+        </li>
+        {% endfor %}
+    </ul>
+
 
     </div>
 </body>
