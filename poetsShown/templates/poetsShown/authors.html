@@ -10,10 +10,19 @@
     <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
+    
+    <div class="home"><a href="{% url 'index' %}" >Ana Sayfa <i class="fa-solid fa-house"></i></a></div>
+    
     <h1>Yazarlar</h1>
-    <a href="{% url 'index' %}" >Ana Sayfa <i class="fa-solid fa-house"></i></a>
-
+    
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ authorForm }}
+            <button type="submit" class="submitBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+    
     <div class="container">
         <ul>
             {% for author in authors %}

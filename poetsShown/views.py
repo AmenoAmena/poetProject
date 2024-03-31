@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import poets_shown,poet_author
-from .forms import PoetSearchForm
+from .forms import PoetSearchForm, AuthorSearchForm
 from django.shortcuts import get_object_or_404
 
 
@@ -37,8 +37,11 @@ def poetShow(request, pk):
 
 def authorShow(request):
     authors = poet_author.objects.all()
+    authorForm = AuthorSearchForm()
     return render(request,'poetsShown/authors.html',{
-        'authors':authors
+        'authors':authors,
+        'authorForm':authorForm
+                
     })
 
 
@@ -47,5 +50,5 @@ def authorPoets(request, pk):
     authorPoet = poets_shown.objects.filter(poetAuthor=author)
     return render(request, 'poetsShown/authorPoets.html', {
         'authorPoet': authorPoet,
-        'author':author
+        'author':author,
         })
