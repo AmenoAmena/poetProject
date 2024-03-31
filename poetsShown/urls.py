@@ -5,6 +5,7 @@ urlpatterns = [
     path("", views.index, name='index'), 
     path("poet/<int:pk>", views.poetShow, name='poet_show'),
     path("author/",views.authorShow,name='author'), 
-    path("authorpoet<int:pk>/", views.authorPoets, name='author_shown')
+    path("authorpoet<int:pk>/", views.authorPoets, name='author_shown'),
+    
 ]
 

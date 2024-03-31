@@ -35,14 +35,50 @@ def poetShow(request, pk):
     })
 
 
+
+
+
+
+
+"""
+def index(request):
+    if request.method == "GET":
+        poets = poets_shown.objects.order_by('-id')
+        form = PoetSearchForm()
+        return render(request,'poetsShown/index.html',{
+            'poets':poets,
+            'form':form
+            })
+    else:
+        form = PoetSearchForm(request.POST)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = poets_shown.objects.filter(poetName__icontains=query)
+            return render(request, "poetsShown/search.html", {
+                "poets": results,
+                'searched': query
+            }) 
+            
+"""
 def authorShow(request):
-    authors = poet_author.objects.all()
-    authorForm = AuthorSearchForm()
-    return render(request,'poetsShown/authors.html',{
-        'authors':authors,
-        'authorForm':authorForm
-                
-    })
+    if request.method == 'GET':
+        authors = poet_author.objects.all()
+        authorForm = AuthorSearchForm()
+        return render(request,'poetsShown/authors.html',{
+            'authors':authors,
+            'authorForm':authorForm
+        })
+    else:
+        authorForm = AuthorSearchForm(request.POST)
+        if authorForm.is_valid():
+            authorQuery = authorForm.cleaned_data['authorQuery']
+            results = poet_author.objects.filter(name__icontains=authorQuery)
+            return render(request, 'poetsShown/authorSearch.html',{
+                'authors':results,
+                'searched':authorQuery
+            })
+    
+
 
 
 def authorPoets(request, pk):
