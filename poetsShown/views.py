@@ -58,7 +58,6 @@ def index(request):
                 "poets": results,
                 'searched': query
             }) 
-                    poets = poets_shown.objects.order_by('-id')
 
 """
 def authorShow(request):
@@ -71,12 +70,14 @@ def authorShow(request):
         })
     else:
         authorForm = AuthorSearchForm(request.POST)
+        poets = poets_shown.objects.all()
         if authorForm.is_valid():
             authorQuery = authorForm.cleaned_data['authorQuery']
-            results = poet_author.objects.filter(name__icontains=authorQuery)
+            results = poet_author.objects.filter(author__icontains=authorQuery)
             return render(request, 'poetsShown/authorSearch.html',{
                 'authors':results,
-                'searched':authorQuery
+                'searched':authorQuery,
+                'poets':poets
             })
     
 
