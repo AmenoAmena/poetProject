@@ -58,11 +58,12 @@ def index(request):
                 "poets": results,
                 'searched': query
             }) 
-            
+                    poets = poets_shown.objects.order_by('-id')
+
 """
 def authorShow(request):
     if request.method == 'GET':
-        authors = poet_author.objects.all()
+        authors = poet_author.objects.order_by('-id')
         authorForm = AuthorSearchForm()
         return render(request,'poetsShown/authors.html',{
             'authors':authors,
@@ -83,7 +84,7 @@ def authorShow(request):
 
 def authorPoets(request, pk):
     author = get_object_or_404(poet_author, pk=pk)
-    authorPoet = poets_shown.objects.filter(poetAuthor=author)
+    authorPoet = poets_shown.objects.filter(poetAuthor=author).order_by('-id')
     return render(request, 'poetsShown/authorPoets.html', {
         'authorPoet': authorPoet,
         'author':author,
