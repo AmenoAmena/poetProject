@@ -7,6 +7,7 @@
     <title>Popülerler</title>
     <link rel="stylesheet" href="{% static 'poetsShown/css/popularity.css' %}">
     <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
 </head>
 <body>
 
@@ -24,7 +25,8 @@
                 <div class="poetShow">
                     <a href="{% url 'poet_show' pk=poet.id %}" class="poetLink">
                         <div class="poet">{{ poet.poetName }}<br>
-                            Görüntüleme: {{poet.popularity}}
+                            <div class="poetName">{{poet.poetAuthor}}</div>
+                            <div class="poetNameCount">Görüntüleme: {{poet.popularity}}</div>
                         </div>
                     </a>
                 </div>
