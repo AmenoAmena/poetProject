@@ -27,12 +27,15 @@ def index(request):
 
 def poetShow(request, pk):  
     poet = get_object_or_404(poets_shown, pk=pk) 
+    poet.popularity += 1  
+    poet.save() 
     author = poet.poetAuthor 
     authorPoet = poets_shown.objects.filter(poetAuthor=author)
     return render(request, 'poetsShown/poets.html', {
         'poet': poet,
         'author': author,
     })
+
 
 
 def authorShow(request):
@@ -54,9 +57,6 @@ def authorShow(request):
                 'searched':authorQuery,
                 'poets':poets
             })
-    
-
-
 
 def authorPoets(request, pk):
     author = get_object_or_404(poet_author, pk=pk)
@@ -65,3 +65,10 @@ def authorPoets(request, pk):
         'authorPoet': authorPoet,
         'author':author,
         })
+
+def popularity(request):
+    poets = poets_shown.objects.all()
+    poets_ordered_popularity = poets.order_by('-popularity')
+    return render(request, 'poetsShown/popularity.html',{
+        'ordered_poets':poets_ordered_popularity
+    })

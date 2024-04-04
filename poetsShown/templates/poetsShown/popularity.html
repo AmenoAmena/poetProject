@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popülerler</title>
+    <link rel="stylesheet" href="{% static 'poetsShown/css/popularity.css' %}">
+    <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <h1>Popüler Şiirler</h1>
+
+    <a href="{% url 'index' %}" >Ana Sayfa <i class="fa-solid fa-house"></i></a>
+
+    <div class="container">
+        
+        <ul>
+
+
+            {% for poet in ordered_poets %}
+            <li>
+                <div class="poetShow">
+                    <a href="{% url 'poet_show' pk=poet.id %}" class="poetLink">
+                        <div class="poet">{{ poet.poetName }}<br>
+                            Görüntüleme: {{poet.popularity}}
+                        </div>
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+</ul>
+</body>
+</html>
