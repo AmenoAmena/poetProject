@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import poets_shown,poet_author
-from .forms import PoetSearchForm, AuthorSearchForm
+from .forms import PoetSearchForm, AuthorSearchForm, PopularitySearchForm
 from django.shortcuts import get_object_or_404
 
 
@@ -67,6 +67,7 @@ def authorPoets(request, pk):
         })
 
 def popularity(request):
+    form = PopularitySearchForm()
     poets = poets_shown.objects.all()
     poets_ordered_popularity = poets.order_by('-popularity')
     return render(request, 'poetsShown/popularity.html',{
