@@ -67,9 +67,23 @@ def authorPoets(request, pk):
         })
 
 def popularity(request):
-    form = PopularitySearchForm()
-    poets = poets_shown.objects.all()
-    poets_ordered_popularity = poets.order_by('-popularity')
-    return render(request, 'poetsShown/popularity.html',{
-        'ordered_poets':poets_ordered_popularity
-    })
+    if request.method == 'GET':
+        form = PopularitySearchForm()
+        poets = poets_shown.objects.all()
+        poets_ordered_popularity = poets.order_by('-popularity')
+        return render(request, 'poetsShown/popularity.html',{
+            'ordered_poets':poets_ordered_popularity,
+            'form':form
+        })
+    else:
+        form = PopularitySearchForm(request.POST)
+        if form.is_valid():
+            popularityQuery = form.cleaned_data['popularityQuery']
+            results = poets_shown.objects.filter(poetName__icontains=popularityQuery)
+            return render(request, "poetsShown/popularitySearch.html", {
+                "poets": results,
+                'searched': popularityQuery
+            })  
+
+
+

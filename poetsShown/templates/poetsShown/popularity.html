@@ -13,6 +13,13 @@
     
     <a href="{% url 'index' %}" >Ana Sayfa <i class="fa-solid fa-house"></i></a>
     <h1>Popüler Şiirler</h1>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="submitBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
 
 
     <div class="container">

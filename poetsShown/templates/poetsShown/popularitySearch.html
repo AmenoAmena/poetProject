@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonuçlar</title>
+    <link rel="stylesheet" href="{% static 'poetsShown/css/popularitySearch.css' %}">
+    <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
+
+</head>
+<body>
+
+    <h1>Sonuçlar: "{{ searched }}"</h1>
+    <a href="{% url 'index' %}" >Ana Sayfa <i class="fa-solid fa-house"></i></a>
+
+    <div class="container">
+        
+        <ul>
+
+            {% for poet in poets %}
+            <li>
+                <div class="poetShow">
+                    <a href="{% url 'author_shown' pk=poet.id %}" class="poetLink">
+                        <div class="poet">{{poet.poetName}}</div>
+                        <div class="poetName">{{poet.poetAuthor}}</div>
+                        <div class="poet">Görüntüleme: {{poet.popularity}}</div>
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+</ul>
+</body>
+</html>

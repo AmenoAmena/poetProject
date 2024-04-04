@@ -9,5 +9,5 @@ class AuthorSearchForm(forms.Form):
     widget=forms.TextInput(attrs={'autocomplete':'off'}))
 
 class PopularitySearchForm(forms.Form):
-    authorQuery = forms.CharField(label='Arama', max_length=40,
+    popularityQuery = forms.CharField(label='Arama', max_length=40,
     widget=forms.TextInput(attrs={'autocomplete':'off'}))
