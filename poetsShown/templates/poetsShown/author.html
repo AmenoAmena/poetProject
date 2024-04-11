@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazarlar</title>
+    <link rel="stylesheet" href="{% static 'poetsShown/css/author.css' %}">
+</head>
+<body>
+    <div class="container">
+
+        <h1>Yazarlar</h1>
+        
+
+        <ul>
+
+
+            <li>
+                <div class="authorShown">
+                    <div class="authors">
+                        {% for author in authors %}
+                        <a href="{% url 'author' %}">{{author.author}}</a>
+                        {% endfor %}
+                    </div>  
+                </div>
+            </li>
+        </ul>
+    
+    </div>
+     
+</body>
+</html>
