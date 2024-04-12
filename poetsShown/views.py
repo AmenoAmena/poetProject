@@ -2,22 +2,16 @@ from django.shortcuts import render
 from .models import poets_shown,poet_author
 from .forms import PoetSearchForm, AuthorSearchForm, PopularitySearchForm
 from django.shortcuts import get_object_or_404
-from django.core.paginator import Paginator
+
 
 # Create your views here.
 def index(request):
     if request.method == "GET":
         poets = poets_shown.objects.order_by('-id')
-
-        p = Paginator(poets,20)
-        page = request.GET.get('page')
-        poets_paginated = p.get_page(page)
-
         form = PoetSearchForm()
         return render(request,'poetsShown/index.html',{
             'poets':poets,
-            'form':form,
-            'paginated_poets':poets_paginated
+            'form':form
             })
     else:
         form = PoetSearchForm(request.POST)
