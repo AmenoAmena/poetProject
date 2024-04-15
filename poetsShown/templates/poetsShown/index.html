@@ -37,7 +37,7 @@
                 </form>
             </div>
             
-            {% for poet in poets %}
+            {% for poet in page_obj %}  <!-- Iterate over page_obj instead of poets -->
 
             <li>
                 <div class="poetShow">
@@ -49,6 +49,23 @@
             </li>
             {% endfor %}
         </ul>
-        <script src="{% static 'poetsShown/js/index.js' %}"></script>
+
+        <!-- Pagination Links -->
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span>{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script src="{% static 'poetsShown/js/index.js' %}"></script>
 </body>
 </html>
