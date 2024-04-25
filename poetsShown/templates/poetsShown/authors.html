@@ -1,16 +1,15 @@
+{% extends "poetsShown/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block title %}
+
     <title>Yazarlar</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
     <link rel="stylesheet" href="{% static 'poetsShown/css/author.css' %}">
-    <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    
+
+{% endblock title %}
+
+{% block body %}    
+
     <div class="home"><a href="{% url 'index' %}" >Ana Sayfa <i class="fa-solid fa-house"></i></a></div>
     
     <h1>Yazarlar</h1>
@@ -34,5 +33,5 @@
             {% endfor %}
         </ul>
     </div>
-</body>
-</html>
+
+{% endblock body %}

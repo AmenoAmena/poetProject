@@ -1,15 +1,13 @@
+{% extends "poetsShown/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+
     <title>Şiirler</title>
     <link rel="stylesheet" href="{% static 'poetsShown/css/index.css' %}">
-    <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
-</head>
-<body>
+
+{% endblock title %}
+
+{% block body %}
 
     <div class="container">
         
@@ -37,7 +35,7 @@
                 </form>
             </div>
             
-            {% for poet in page_obj %}  <!-- Iterate over page_obj instead of poets -->
+            {% for poet in page_obj %}  
 
             <li>
                 <div class="poetShow">
@@ -67,5 +65,6 @@
     </div>
     
     <script src="{% static 'poetsShown/js/index.js' %}"></script>
-</body>
-</html>
+
+{% endblock body %}
+

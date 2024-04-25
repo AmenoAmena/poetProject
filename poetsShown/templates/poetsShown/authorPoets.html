@@ -1,16 +1,14 @@
+{% extends "poetsShown/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block title %}
+
     <title>{{author}} şiirleri</title>
     <link rel="stylesheet" href="{% static 'poetsShown/css/authorPoets.css' %}">
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
-    <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
 
-</head>
-<body>
+{% endblock title %}
+
+{% block body %}
 
     <h1>{{author}}</h1>
     <br>
@@ -31,5 +29,5 @@
 
 
     </div>
-</body>
-</html>
+
+{% endblock %}

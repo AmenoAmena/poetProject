@@ -1,33 +1,27 @@
+{% extends "poetsShown/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
+
+{% block title %}
     <title>
         {{poet.poetName}}
     </title>
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
     <link rel="stylesheet" href="{% static 'poetsShown/css/poets.css' %}">
-</head>
-<body>
+{% endblock title %}
 
-    <div class="container">
-            
+{% block body %}
+    <div class="container">  
         <a href="{% url 'index' %}">Ana Sayfa <i class="fa-solid fa-house"></i></a>
-        {% if poet %}
-            <h1><a href="{% url 'author_shown' pk=author.id %}">{{ poet.poetAuthor }}</a></h1>
-            <h2>{{ p.poetName }}</h2>   
-            <div class="poetShow">
-                <h1>{{ poet.poetName }}</h1>
-                <h2>{{ author.name }}</h2>
-            </div>
-                <hr>
-                <pre class="poet-context">{{ poet.poetContext }}</pre>
-        {% else %}
-            <p>No poet found.</p>
-        {% endif %}
+            {% if poet %}
+                <h1><a href="{% url 'author_shown' pk=author.id %}">{{ poet.poetAuthor }}</a></h1>
+                <h2>{{ p.poetName }}</h2>   
+                <div class="poetShow">
+                    <h1>{{ poet.poetName }}</h1>
+                    <h2>{{ author.name }}</h2>
+                </div>
+                    <hr>
+                    <pre class="poet-context">{{ poet.poetContext }}</pre>
+            {% else %}
+                <p>No poet found.</p>
+            {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}

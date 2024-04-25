@@ -1,16 +1,15 @@
+{% extends "poetsShown/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block title %}
+
     <title>Popülerler</title>
     <link rel="stylesheet" href="{% static 'poetsShown/css/popularity.css' %}">
-    <script src="https://kit.fontawesome.com/b461c2f143.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'poetsShown/img/poem.png' %}">
-</head>
-<body>
-    
+
+{% endblock title %}
+
+{% block body %}    
+
     <a href="{% url 'index' %}" >Ana Sayfa <i class="fa-solid fa-house"></i></a>
     <h1>Popüler Şiirler</h1>
     <div class="form-container">
@@ -40,6 +39,4 @@
             {% endfor %}
         </ul>
 
-</ul>
-</body>
-</html>
+{% endblock body %}
