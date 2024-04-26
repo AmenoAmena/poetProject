@@ -112,8 +112,8 @@ form {
   .pagination {
     position: fixed;
     bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,10 +124,13 @@ form {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .pagination ul li {
-    display: inline-block;
     margin: 0 5px;
 }
 
@@ -139,6 +142,7 @@ form {
     border: 1px solid #333;
     border-radius: 3px;
     transition: background-color 0.3s, color 0.3s;
+    margin: 5px; /* Add margin between pagination links */
 }
 
 .pagination a:hover {
@@ -149,4 +153,3 @@ form {
 .pagination span {
     color: #777;
 }
-

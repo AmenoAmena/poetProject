@@ -51,26 +51,35 @@
         <div class="pagination">
             <ul>
                 {% if page_obj.has_previous %}
-                    <li><a href="?page=1">1</a></li>
-                    {% if page_obj.number > 3 %}<li><span>...</span></li>{% endif %}
+                <li><a href="?page=1">1</a></li>
+                {% if page_obj.number > 4 %}<li><span>...</span></li>{% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                    {% if num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+                        {% if num == page_obj.number %}
+                            <li><span>{{ num }}</span></li>
+                        {% else %}
+                            <li><a href="?page={{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}<li><span>...</span></li>{% endif %}
+                <li><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+            {% else %}
+                {% if page_obj.paginator.num_pages <= 6 %}
                     {% for num in page_obj.paginator.page_range %}
-                        {% if num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                            {% if num == page_obj.number %}
-                                <li><span>{{ num }}</span></li>
-                            {% else %}
-                                <li><a href="?page={{ num }}">{{ num }}</a></li>
-                            {% endif %}
+                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                    {% endfor %}
+                {% else %}
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if num < 4 %}
+                            <li><a href="?page={{ num }}">{{ num }}</a></li>
                         {% endif %}
                     {% endfor %}
-                    {% if page_obj.number < page_obj.paginator.num_pages|add:'-2' %}<li><span>...</span></li>{% endif %}
+                    <li><span>...</span></li>
                     <li><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
-                {% else %}
-                    <li><span>1</span></li>
-                    <li><a href="?page=2">2</a></li>
-                    <li><a href="?page=3">3</a></li>
-                    {% if page_obj.paginator.num_pages > 3 %}<li><span>...</span></li>{% endif %}
                 {% endif %}
-            </ul>
+            {% endif %}
+                        </ul>
 
         </div>
         
