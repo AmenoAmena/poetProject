@@ -30,7 +30,7 @@
             <div class="form-container">
                 <form method="post">
                     {% csrf_token %}
-                    {{ form }}
+                    {{ form.as_p }}
                     <button type="submit" class="submitBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
@@ -48,22 +48,33 @@
             {% endfor %}
         </ul>
 
-        <!-- Pagination Links -->
         <div class="pagination">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">First</a>
-                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-            {% endif %}
+            <ul>
+                {% if page_obj.has_previous %}
+                    <li><a href="?page=1">1</a></li>
+                    {% if page_obj.number > 3 %}<li><span>...</span></li>{% endif %}
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            {% if num == page_obj.number %}
+                                <li><span>{{ num }}</span></li>
+                            {% else %}
+                                <li><a href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.number < page_obj.paginator.num_pages|add:'-2' %}<li><span>...</span></li>{% endif %}
+                    <li><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+                {% else %}
+                    <li><span>1</span></li>
+                    <li><a href="?page=2">2</a></li>
+                    <li><a href="?page=3">3</a></li>
+                    {% if page_obj.paginator.num_pages > 3 %}<li><span>...</span></li>{% endif %}
+                {% endif %}
+            </ul>
 
-            <span>{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">Next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-            {% endif %}
         </div>
-    </div>
-    
+        
+        
     <script src="{% static 'poetsShown/js/index.js' %}"></script>
 
 {% endblock body %}

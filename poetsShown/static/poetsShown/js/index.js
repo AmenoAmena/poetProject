@@ -16,3 +16,16 @@ document.addEventListener("click", function(event) {
     }
   }
   
+window.addEventListener('scroll', function() {
+  console.log("Scrolling...");
+  var bottom = document.documentElement.scrollHeight - window.innerHeight;
+  var scrollTop =  document.documentElement.scrollTop;
+  var scrollPercentage = (scrollTop / bottom) * 100;
+
+  if (scrollPercentage > 90) {
+      document.querySelector('.pagination').style.visibility = 'visible';
+  } else {
+      document.querySelector('.pagination').style.visibility = 'hidden';
+  }
+});
+  

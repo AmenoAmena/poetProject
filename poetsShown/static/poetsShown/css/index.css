@@ -109,3 +109,44 @@ form {
     background-color: #ddd;
   }
   
+  .pagination {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.pagination ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination ul li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination a,
+.pagination span {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.pagination span {
+    color: #777;
+}
+

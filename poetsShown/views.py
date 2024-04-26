@@ -6,8 +6,9 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
-    poets = poets_shown.objects.order_by('-id')
     
+    poets = poets_shown.objects.order_by('-id')
+
     paginator = Paginator(poets, 1)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -19,12 +20,8 @@ def index(request):
         if form.is_valid():
             query = form.cleaned_data['query']
             results = poets_shown.objects.filter(poetName__icontains=query)
-
-            paginator = Paginator(results, 20)
-            page_number = request.GET.get('page')
-            page_obj = paginator.get_page(page_number)
             return render(request, "poetsShown/search.html", {
-                "page_obj": page_obj,  
+                "results": results,  
                 'searched': query,
                 'form': form  
             }) 
@@ -34,7 +31,6 @@ def index(request):
         'form': form
     })
             
-
 
 def poetShow(request, pk):  
     poet = get_object_or_404(poets_shown, pk=pk) 
