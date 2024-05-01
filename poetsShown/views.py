@@ -32,8 +32,8 @@ def index(request):
     })
             
 
-def poetShow(request, pk):  
-    poet = get_object_or_404(poets_shown, pk=pk) 
+def poetShow(request, name):  
+    poet = get_object_or_404(poets_shown, poetName=name) 
     poet.popularity += 1  
     poet.save() 
     author = poet.poetAuthor 
@@ -65,8 +65,8 @@ def authorShow(request):
                 'poets':poets
             })
 
-def authorPoets(request, pk):
-    author = get_object_or_404(poet_author, pk=pk)
+def authorPoets(request, poetAuthor):
+    author = get_object_or_404(poet_author, author=poetAuthor)
     authorPoet = poets_shown.objects.filter(poetAuthor=author).order_by('-id')
     return render(request, 'poetsShown/authorPoets.html', {
         'authorPoet': authorPoet,

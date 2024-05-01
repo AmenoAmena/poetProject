@@ -20,7 +20,7 @@
             {% for auth in authors %}
             <li>
                 <div class="poetShow">
-                    <a href="{% url 'author_shown' pk=auth.id %}" class="poetLink">
+                    <a href="{% url 'author_shown' authorName=auth.author %}" class="poetLink">
                         <div class="poet">{{ auth }}</div>
                     </a>
                 </div>

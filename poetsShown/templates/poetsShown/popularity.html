@@ -29,7 +29,7 @@
             {% for poet in ordered_poets %}
             <li>
                 <div class="poetShow">
-                    <a href="{% url 'poet_show' pk=poet.id %}" class="poetLink">
+                    <a href="{% url 'poet_show' name=poet.poetName %}" class="poetLink">
                         <div class="poet">{{ poet.poetName }}<br>
                             <div class="poetName">{{poet.poetAuthor}}</div>
                         </div>

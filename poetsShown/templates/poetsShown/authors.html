@@ -27,7 +27,7 @@
             {% for author in authors %}
             <li class="authorShow">
                 <div class="author">
-                    <a href="{% url 'author_shown' pk=author.id %}">{{ author }}</a>
+                    <a href="{% url 'author_shown' poetAuthor=author.author %}">{{ author }}</a>
                 </div>
             </li>
             {% endfor %}
