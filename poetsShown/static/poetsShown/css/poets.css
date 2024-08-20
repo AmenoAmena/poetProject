@@ -38,7 +38,6 @@ h3 {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    text-align: center;
 }
 
 hr {
@@ -47,7 +46,7 @@ hr {
     margin: 20px 0;
 }
 pre {
-    font-size:20px;
+    font-size: 1.4rem;
 }
 a {
     text-decoration: none;

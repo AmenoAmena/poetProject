@@ -9,7 +9,7 @@ def index(request):
     
     poets = poets_shown.objects.order_by('-id')
 
-    paginator = Paginator(poets, 1)
+    paginator = Paginator(poets, 15)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     
