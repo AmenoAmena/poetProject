@@ -21,7 +21,7 @@
             {% for poet in results %}
             <li>
                 <div class="poetShow">
-                    <a href="{% url 'poet_show' poetName=poet.poetName %}" class="poetLink">
+                    <a href="{% url 'poet_show' name=poet.poetName %}" class="poetLink">
                         <div class="poet">{{ poet.poetName }}</div>
                         <div class="poetName">{{ poet.poetAuthor }}</div>
                     </a>
